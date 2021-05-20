@@ -15,6 +15,10 @@ public class Main {
         Espece[] especes = Espece.values();
         Sexe[] sexes = Sexe.values();
         int cpt = 0;
+        int cptChat = 0;
+        int cptChien = 0;
+        int cptGorille = 0;
+        int cptLapin = 0;
         Arche archeDeNoe = new Arche();
         Animal nouvelAnimal = new Animal(null, null);
 
@@ -39,19 +43,23 @@ public class Main {
             switch (espece1) {
                 case 0:
                     nouvelAnimal = new Chat(nom, sexes[sexe1]);
-                    System.out.println("Nouvel Animal : " + nouvelAnimal);
+                    System.out.println("Nouvel Animal Chat : " + nouvelAnimal);
+                    cptChat ++;
                     break;
                 case 1:
                     nouvelAnimal = new Chien(nom, sexes[sexe1]);
-                    System.out.println("Nouvel Animal : " + nouvelAnimal);
+                    System.out.println("Nouvel Animal Chien : " + nouvelAnimal);
+                    cptChien++;
                     break;
                 case 2:
                     nouvelAnimal = new Gorille(nom, sexes[sexe1]);
-                    System.out.println("Nouvel Animal : " + nouvelAnimal);
+                    System.out.println("Nouvel Animal Gorille : " + nouvelAnimal);
+                    cptGorille++;
                     break;
                 case 3:
                     nouvelAnimal = new Lapin(nom, sexes[sexe1]);
-                    System.out.println("Nouvel Animal : " + nouvelAnimal);
+                    System.out.println("Nouvel Animal Lapin : " + nouvelAnimal);
+                    cptLapin++;
                     break;
                 default:
                     System.out.println("Erreur saisie.");
@@ -74,6 +82,7 @@ public class Main {
 
         }
         System.out.println("Remplissage du tableau terminée.");
+        System.out.println("L'arche possède à son bord, " + cptChat + " chats, " + cptChien + " chiens, " + cptGorille + " gorilles, " + cptLapin + " lapins.");
     }
 
 }
