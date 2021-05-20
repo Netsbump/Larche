@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-//*************************************AFFICHAGE DU MENU***************************************************************
+//*************************************AFFICHAGE DU MENU****************************************************************
 
         //Je crée deux tableaux pour stocker les enum d'Espèce et Sexe
         Espece[] especes = Espece.values();
@@ -44,7 +44,7 @@ public class Main {
                 case 0:
                     nouvelAnimal = new Chat(nom, sexes[sexe1]);
                     System.out.println("Nouvel Animal Chat : " + nouvelAnimal);
-                    cptChat ++;
+                    cptChat++;
                     break;
                 case 1:
                     nouvelAnimal = new Chien(nom, sexes[sexe1]);
@@ -65,21 +65,56 @@ public class Main {
                     System.out.println("Erreur saisie.");
 
             }
+//*********************************VERIFICATION-ESPECE-OU-GENRE-DEJA-PRESENT-DANS-LARCHE********************************
+            if (cptChat > 2) {
+                System.out.println("Désolé nous avons déjà " + cptChat + " Chats à bord ! ");
+                System.out.println("Un autre animal à ajouter ? (o/N)");
+                Scanner saisieFin = new Scanner(System.in);
+                String saisieFinal = saisieFin.nextLine();
+                if (!saisieFinal.equals("o")) {
+                    break;
+                }
+            } else if (cptChien > 2) {
+                System.out.println("Désolé nous avons déjà " + cptChien + " Chiens à bord ! ");
+                System.out.println("Un autre animal à ajouter ? (o/N)");
+                Scanner saisieFin = new Scanner(System.in);
+                String saisieFinal = saisieFin.nextLine();
+                if (!saisieFinal.equals("o")) {
+                    break;
+                }
+            } else if (cptGorille > 2) {
+                System.out.println("Désolé nous avons déjà " + cptGorille + " Gorille à bord ! ");
+                System.out.println("Un autre animal à ajouter ? (o/N)");
+                Scanner saisieFin = new Scanner(System.in);
+                String saisieFinal = saisieFin.nextLine();
+                if (!saisieFinal.equals("o")) {
+                    break;
+                }
+            } else if (cptLapin > 2) {
+                System.out.println("Désolé nous avons déjà " + cptLapin + " Lapins à bord ! ");
+                System.out.println("Un autre animal à ajouter ? (o/N)");
+                Scanner saisieFin = new Scanner(System.in);
+                String saisieFinal = saisieFin.nextLine();
+                if (!saisieFinal.equals("o")) {
+                    break;
+                }
+            } else {
 //*************************************STOCKAGE-DE-L-ANIMAL-DANS-L-ARCHE************************************************
 
-            //Faire appel à la méthode ajouterAnimal de la classe Arche afin d'ajouter l'animal dans un tableau d'animaux.
-            archeDeNoe.ajouterAnimal(nouvelAnimal);
-            System.out.println(archeDeNoe);
-            System.out.println("L'animal " + nouvelAnimal.nom + " est dans l'arche.");
-            cpt++;
-            //Demander s'il y a d'autres animaux à ajouter (possible de ne pas en mettre 8)
-            System.out.println("Un autre animal à ajouter ? (o/N)");
-            Scanner saisieFin = new Scanner(System.in);
-            String saisieFinal = saisieFin.nextLine();
-            if (!saisieFinal.equals("o")) {
-                break;
-            }
+                //Faire appel à la méthode ajouterAnimal de la classe Arche afin d'ajouter l'animal dans un tableau d'animaux.
+                archeDeNoe.ajouterAnimal(nouvelAnimal);
+                System.out.println(archeDeNoe);
+                cpt++;
+                System.out.println("L'animal " + nouvelAnimal.nom + " est dans l'arche.(capacité " + cpt + "/" + 8 + ")");
+                //Demander s'il y a d'autres animaux à ajouter (possible de ne pas en mettre 8)
+                System.out.println("Un autre animal à ajouter ? (o/N)");
+                Scanner saisieFin = new Scanner(System.in);
+                String saisieFinal = saisieFin.nextLine();
+                if (!saisieFinal.equals("o")) {
+                    break;
+                }
 
+            }
         }
         System.out.println("Remplissage du tableau terminée.");
         System.out.println("L'arche possède à son bord, " + cptChat + " chats, " + cptChien + " chiens, " + cptGorille + " gorilles, " + cptLapin + " lapins.");
