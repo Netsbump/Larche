@@ -83,6 +83,23 @@ public class Main {
         }
         System.out.println("Remplissage du tableau terminée.");
         System.out.println("L'arche possède à son bord, " + cptChat + " chats, " + cptChien + " chiens, " + cptGorille + " gorilles, " + cptLapin + " lapins.");
+
+//*******************************************************TEMPETE********************************************************
+
+        int viande = 0;
+        if(cptChat > 0 || cptChien > 0){
+            viande = (cptChat *(30*10)) + (cptChien *(30*10));
+        }
+
+        int vegetaux = 0;
+        if(cptGorille > 0 || cptLapin > 0) {
+            vegetaux = (cptGorille * (10 * 10)) + (cptLapin * (10 * 10));
+        }
+
+        System.out.println("Le commis doit donc avoir à bord, " + vegetaux + " végétaux" + " et " + viande + "kg de viande.");
+
     }
+
+
 
 }
