@@ -18,7 +18,8 @@ public class Main {
         Arche archeDeNoe = new Arche();
         Animal nouvelAnimal = new Animal(null, null);
 
-        while (cpt < 9){
+        //Boucle pour remplir le tableau d'animaux jusqu'à 8
+        while (cpt < 9) {
 
             //Creation d'une instance d'animal qui sera valorisé par la suite
 
@@ -35,19 +36,23 @@ public class Main {
             Scanner saisieEspece = new Scanner(System.in);
             int espece1 = saisieEspece.nextInt();
             //Stockage des saisies en créant des animaux qui correspondent
-            switch (espece1)    {
-                case 0 :
+            switch (espece1) {
+                case 0:
                     nouvelAnimal = new Chat(nom, sexes[sexe1]);
-                    System.out.println("Nouvel Animal : " + nouvelAnimal);break;
-                case 1 :
+                    System.out.println("Nouvel Animal : " + nouvelAnimal);
+                    break;
+                case 1:
                     nouvelAnimal = new Chien(nom, sexes[sexe1]);
-                    System.out.println("Nouvel Animal : " + nouvelAnimal);break;
-                case 2 :
+                    System.out.println("Nouvel Animal : " + nouvelAnimal);
+                    break;
+                case 2:
                     nouvelAnimal = new Gorille(nom, sexes[sexe1]);
-                    System.out.println("Nouvel Animal : " + nouvelAnimal);break;
-                case 3 :
+                    System.out.println("Nouvel Animal : " + nouvelAnimal);
+                    break;
+                case 3:
                     nouvelAnimal = new Lapin(nom, sexes[sexe1]);
-                    System.out.println("Nouvel Animal : " + nouvelAnimal);break;
+                    System.out.println("Nouvel Animal : " + nouvelAnimal);
+                    break;
                 default:
                     System.out.println("Erreur saisie.");
 
@@ -57,11 +62,18 @@ public class Main {
             //Faire appel à la méthode ajouterAnimal de la classe Arche afin d'ajouter l'animal dans un tableau d'animaux.
             archeDeNoe.ajouterAnimal(nouvelAnimal);
             System.out.println(archeDeNoe);
+            System.out.println("L'animal " + nouvelAnimal.nom + " est dans l'arche.");
+            cpt++;
+            //Demander s'il y a d'autres animaux à ajouter (possible de ne pas en mettre 8)
+            System.out.println("Un autre animal à ajouter ? (o/N)");
+            Scanner saisieFin = new Scanner(System.in);
+            String saisieFinal = saisieFin.nextLine();
+            if (!saisieFinal.equals("o")) {
+                break;
+            }
 
-            cpt ++;
         }
-
-
+        System.out.println("Remplissage du tableau terminée.");
     }
 
 }
