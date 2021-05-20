@@ -1,6 +1,7 @@
 package fr.eni;
 
 import java.sql.SQLOutput;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -30,51 +31,58 @@ public class Main {
             //Creation d'une instance d'animal qui sera valorisé par la suite
 
             //Debut de l'affichage
+
+//**********************************************DEMANDE-DU-NOM**********************************************************
             System.out.println("Quel est ton nom ?");
             Scanner saisieNom = new Scanner(System.in);
             String nom = saisieNom.nextLine();
 
+//*******************************************DEMANDE-DU-GENRE***********************************************************
             System.out.println("Quel est ton sexe ? 0-MASCULIN 1-FEMININ");
-            Scanner saisieSexe = new Scanner(System.in);
-            int sexe1 = saisieSexe.nextInt();
-            if (sexe1 == 0){
-                cptMasculin++;
-            } else {
-                cptFeminin++;
-            }
 
+                Scanner saisieSexe = new Scanner(System.in);
+                int sexe1 = saisieSexe.nextInt();
+            try{
+                if (sexe1 == 0){
+                    cptMasculin++;
+                } else if (sexe1 ==1){
+                    cptFeminin++;
+                }
+            } catch (InputMismatchException e) {
+                System.err.println("Saisie incorrecte");
+            }
+//*******************************************DEMANDE-DE-L-ESPECE********************************************************
             System.out.println("Quel est ton espèce ? 0-CHAT 1-CHIEN 2-GORILLE 3-LAPIN");
             Scanner saisieEspece = new Scanner(System.in);
             int espece1 = saisieEspece.nextInt();
             //Stockage des saisies en créant des animaux qui correspondent
-            switch (espece1) {
-                case 0:
-                    nouvelAnimal = new Chat(nom, sexes[sexe1]);
-                    System.out.println("Nouvel Animal Chat : " + nouvelAnimal);
-                    cptChat++;
-                    break;
-                case 1:
-                    nouvelAnimal = new Chien(nom, sexes[sexe1]);
-                    System.out.println("Nouvel Animal Chien : " + nouvelAnimal);
-                    cptChien++;
-                    break;
-                case 2:
-                    nouvelAnimal = new Gorille(nom, sexes[sexe1]);
-                    System.out.println("Nouvel Animal Gorille : " + nouvelAnimal);
-                    cptGorille++;
-                    break;
-                case 3:
-                    nouvelAnimal = new Lapin(nom, sexes[sexe1]);
-                    System.out.println("Nouvel Animal Lapin : " + nouvelAnimal);
-                    cptLapin++;
-                    break;
-                default:
-                    System.out.println("Erreur saisie.");
-
-            }
+                switch (espece1) {
+                    case 0:
+                        nouvelAnimal = new Chat(nom, sexes[sexe1]);
+                        System.out.println("Nouvel Animal Chat : " + nouvelAnimal);
+                        cptChat++;
+                        break;
+                    case 1:
+                        nouvelAnimal = new Chien(nom, sexes[sexe1]);
+                        System.out.println("Nouvel Animal Chien : " + nouvelAnimal);
+                        cptChien++;
+                        break;
+                    case 2:
+                        nouvelAnimal = new Gorille(nom, sexes[sexe1]);
+                        System.out.println("Nouvel Animal Gorille : " + nouvelAnimal);
+                        cptGorille++;
+                        break;
+                    case 3:
+                        nouvelAnimal = new Lapin(nom, sexes[sexe1]);
+                        System.out.println("Nouvel Animal Lapin : " + nouvelAnimal);
+                        cptLapin++;
+                        break;
+                    default:
+                        throw new IllegalStateException("Mauvaise valeur d'espèce : " + espece1);
+                }
 //*********************************VERIFICATION-GENRE-DEJA-PRESENT-DANS-LARCHE******************************************
             if (cptMasculin > 1 && cptChat > 1){
-                System.out.println("Désolé nous avons déjà un Chat masculin à bord");
+                System.out.println("Désolé nous avons déjà un Chat masculin à bord");//remplacer sout par throw new  MemeSexeException, par contre faire une methode ajouterAnimal throws MemeSexeException
                 cptChat--;
                 if (autreAnimal() == false){
                     break;
