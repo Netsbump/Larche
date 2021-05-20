@@ -12,7 +12,6 @@ public class Main {
 //*************************************AFFICHAGE DU MENU****************************************************************
 
         //Je crée deux tableaux pour stocker les enum d'Espèce et Sexe
-        Espece[] especes = Espece.values();
         Sexe[] sexes = Sexe.values();
         int cpt = 0;
         int cptChat = 0;
