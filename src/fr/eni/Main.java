@@ -16,11 +16,12 @@ public class Main {
         Sexe[] sexes = Sexe.values();
         int cpt = 0;
         Arche archeDeNoe = new Arche();
+        Animal nouvelAnimal = new Animal(null, null);
 
         while (cpt < 9){
 
             //Creation d'une instance d'animal qui sera valorisé par la suite
-            Animal nouvelAnimal;
+
             //Debut de l'affichage
             System.out.println("Quel est ton nom ?");
             Scanner saisieNom = new Scanner(System.in);
@@ -33,7 +34,7 @@ public class Main {
             System.out.println("Quel est ton espèce ? 0-CHAT 1-CHIEN 2-GORILLE 3-LAPIN");
             Scanner saisieEspece = new Scanner(System.in);
             int espece1 = saisieEspece.nextInt();
-
+            //Stockage des saisies en créant des animaux qui correspondent
             switch (espece1)    {
                 case 0 :
                     nouvelAnimal = new Chat(nom, sexes[sexe1]);
@@ -49,9 +50,8 @@ public class Main {
                     System.out.println("Nouvel Animal : " + nouvelAnimal);break;
                 default:
                     System.out.println("Erreur saisie.");
+
             }
-
-
 //*************************************STOCKAGE-DE-L-ANIMAL-DANS-L-ARCHE************************************************
 
             //Faire appel à la méthode ajouterAnimal de la classe Arche afin d'ajouter l'animal dans un tableau d'animaux.
