@@ -74,86 +74,62 @@ public class Main {
 
             }
 //*********************************VERIFICATION-GENRE-DEJA-PRESENT-DANS-LARCHE******************************************
-            if (cptMasculin > 1 && cptChat >= 1){
+            if (cptMasculin > 1 && cptChat > 1){
                 System.out.println("Désolé nous avons déjà un Chat masculin à bord");
                 cptChat--;
-                System.out.println("Un autre animal à ajouter ? (o/N)");
-                Scanner saisieFin = new Scanner(System.in);
-                String saisieFinal = saisieFin.nextLine();
-                if (!saisieFinal.equals("o")) {
+                if (autreAnimal() == false){
                     break;
                 }
             }
-            if (cptFeminin > 1 && cptChat >= 1){
+            if (cptFeminin > 1 && cptChat > 1){
                 System.out.println("Désolé nous avons déjà un Chat féminin à bord");
                 cptChat--;
-                System.out.println("Un autre animal à ajouter ? (o/N)");
-                Scanner saisieFin = new Scanner(System.in);
-                String saisieFinal = saisieFin.nextLine();
-                if (!saisieFinal.equals("o")) {
+                if (autreAnimal() == false){
                     break;
                 }
             }
 
-            if (cptMasculin > 1 && cptChien >= 1){
+            if (cptMasculin > 1 && cptChien > 1){
                 System.out.println("Désolé nous avons déjà un Chien masculin à bord");
                 cptChien--;
-                System.out.println("Un autre animal à ajouter ? (o/N)");
-                Scanner saisieFin = new Scanner(System.in);
-                String saisieFinal = saisieFin.nextLine();
-                if (!saisieFinal.equals("o")) {
+                if (autreAnimal() == false){
                     break;
                 }
             }
-            if (cptFeminin > 1 && cptChien >= 1){
+            if (cptFeminin > 1 && cptChien > 1){
                 System.out.println("Désolé nous avons déjà un Chien féminin à bord");
                 cptChien--;
-                System.out.println("Un autre animal à ajouter ? (o/N)");
-                Scanner saisieFin = new Scanner(System.in);
-                String saisieFinal = saisieFin.nextLine();
-                if (!saisieFinal.equals("o")) {
+                if (autreAnimal() == false){
                     break;
                 }
             }
 
-            if (cptMasculin > 1 && cptGorille >= 1){
+            if (cptMasculin > 1 && cptGorille > 1){
                 System.out.println("Désolé nous avons déjà un Gorille masculin à bord");
                 cptGorille--;
-                System.out.println("Un autre animal à ajouter ? (o/N)");
-                Scanner saisieFin = new Scanner(System.in);
-                String saisieFinal = saisieFin.nextLine();
-                if (!saisieFinal.equals("o")) {
+                if (autreAnimal() == false){
                     break;
                 }
             }
-            if (cptFeminin > 1 && cptGorille >= 1){
+            if (cptFeminin > 1 && cptGorille > 1){
                 System.out.println("Désolé nous avons déjà un Gorille féminin à bord");
                 cptGorille--;
-                System.out.println("Un autre animal à ajouter ? (o/N)");
-                Scanner saisieFin = new Scanner(System.in);
-                String saisieFinal = saisieFin.nextLine();
-                if (!saisieFinal.equals("o")) {
+                if (autreAnimal() == false){
                     break;
                 }
             }
 
-            if (cptMasculin > 1 && cptLapin >= 1){
+            if (cptMasculin > 1 && cptLapin > 1){
                 System.out.println("Désolé nous avons déjà un Lapin masculin à bord");
                 cptLapin--;
-                System.out.println("Un autre animal à ajouter ? (o/N)");
-                Scanner saisieFin = new Scanner(System.in);
-                String saisieFinal = saisieFin.nextLine();
-                if (!saisieFinal.equals("o")) {
+                if (autreAnimal() == false){
                     break;
                 }
             }
-            if (cptFeminin > 1 && cptLapin >= 1){
+            if (cptFeminin > 1 && cptLapin > 1){
                 System.out.println("Désolé nous avons déjà un Lapin féminin à bord");
                 cptLapin--;
-                System.out.println("Un autre animal à ajouter ? (o/N)");
-                Scanner saisieFin = new Scanner(System.in);
-                String saisieFinal = saisieFin.nextLine();
-                if (!saisieFinal.equals("o")) {
+                if (autreAnimal() == false){
                     break;
                 }
             }
@@ -161,34 +137,22 @@ public class Main {
 //*********************************VERIFICATION-ESPECE-ET-NB-DEJA-PRESENT-DANS-LARCHE***********************************
             if (cptChat > 2) {
                 System.out.println("Désolé nous avons déjà " + cptChat + " Chats à bord ! ");
-                System.out.println("Un autre animal à ajouter ? (o/N)");
-                Scanner saisieFin = new Scanner(System.in);
-                String saisieFinal = saisieFin.nextLine();
-                if (!saisieFinal.equals("o")) {
+                if (autreAnimal() == false){
                     break;
                 }
             } else if (cptChien > 2) {
                 System.out.println("Désolé nous avons déjà " + cptChien + " Chiens à bord ! ");
-                System.out.println("Un autre animal à ajouter ? (o/N)");
-                Scanner saisieFin = new Scanner(System.in);
-                String saisieFinal = saisieFin.nextLine();
-                if (!saisieFinal.equals("o")) {
+                if (autreAnimal() == false){
                     break;
                 }
             } else if (cptGorille > 2) {
                 System.out.println("Désolé nous avons déjà " + cptGorille + " Gorille à bord ! ");
-                System.out.println("Un autre animal à ajouter ? (o/N)");
-                Scanner saisieFin = new Scanner(System.in);
-                String saisieFinal = saisieFin.nextLine();
-                if (!saisieFinal.equals("o")) {
+                if (autreAnimal() == false){
                     break;
                 }
             } else if (cptLapin > 2) {
                 System.out.println("Désolé nous avons déjà " + cptLapin + " Lapins à bord ! ");
-                System.out.println("Un autre animal à ajouter ? (o/N)");
-                Scanner saisieFin = new Scanner(System.in);
-                String saisieFinal = saisieFin.nextLine();
-                if (!saisieFinal.equals("o")) {
+                if (autreAnimal() == false){
                     break;
                 }
             } else {
@@ -200,19 +164,15 @@ public class Main {
                 cpt++;
                 System.out.println("L'animal " + nouvelAnimal.nom + " est dans l'arche.(capacité " + cpt + "/" + 8 + ")");
                 //Demander s'il y a d'autres animaux à ajouter (possible de ne pas en mettre 8)
-                System.out.println("Un autre animal à ajouter ? (o/N)");
-                Scanner saisieFin = new Scanner(System.in);
-                String saisieFinal = saisieFin.nextLine();
-                if (!saisieFinal.equals("o")) {
+                if (autreAnimal() == false){
                     break;
                 }
-
             }
         }
         System.out.println("Remplissage du tableau terminée.");
         System.out.println("L'arche possède à son bord, " + cptChat + " chats, " + cptChien + " chiens, " + cptGorille + " gorilles, " + cptLapin + " lapins.");
 
-//*******************************************************TEMPETE********************************************************
+//****************************************************TEMPETE***********************************************************
 
         int viande = 0;
         if(cptChat > 0 || cptChien > 0){
@@ -228,6 +188,17 @@ public class Main {
 
     }
 
+//**************************************METHODE-REQUETE-AUTRE-ANIMAL-A-AJOUTER******************************************
 
+    public static boolean autreAnimal(){
+        System.out.println("Un autre animal à ajouter ? (o/N)");
+        Scanner saisieFin = new Scanner(System.in);
+        String saisieFinal = saisieFin.nextLine();
+        if (!saisieFinal.equals("o")) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 }
