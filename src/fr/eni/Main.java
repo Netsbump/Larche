@@ -19,6 +19,9 @@ public class Main {
         int cptChien = 0;
         int cptGorille = 0;
         int cptLapin = 0;
+        int cptMasculin = 0;
+        int cptFeminin = 0;
+
         Arche archeDeNoe = new Arche();
         Animal nouvelAnimal = new Animal(null, null);
 
@@ -35,6 +38,11 @@ public class Main {
             System.out.println("Quel est ton sexe ? 0-MASCULIN 1-FEMININ");
             Scanner saisieSexe = new Scanner(System.in);
             int sexe1 = saisieSexe.nextInt();
+            if (sexe1 == 0){
+                cptMasculin++;
+            } else {
+                cptFeminin++;
+            }
 
             System.out.println("Quel est ton espèce ? 0-CHAT 1-CHIEN 2-GORILLE 3-LAPIN");
             Scanner saisieEspece = new Scanner(System.in);
@@ -65,7 +73,92 @@ public class Main {
                     System.out.println("Erreur saisie.");
 
             }
-//*********************************VERIFICATION-ESPECE-OU-GENRE-DEJA-PRESENT-DANS-LARCHE********************************
+//*********************************VERIFICATION-GENRE-DEJA-PRESENT-DANS-LARCHE******************************************
+            if (cptMasculin > 1 && cptChat >= 1){
+                System.out.println("Désolé nous avons déjà un Chat masculin à bord");
+                cptChat--;
+                System.out.println("Un autre animal à ajouter ? (o/N)");
+                Scanner saisieFin = new Scanner(System.in);
+                String saisieFinal = saisieFin.nextLine();
+                if (!saisieFinal.equals("o")) {
+                    break;
+                }
+            }
+            if (cptFeminin > 1 && cptChat >= 1){
+                System.out.println("Désolé nous avons déjà un Chat féminin à bord");
+                cptChat--;
+                System.out.println("Un autre animal à ajouter ? (o/N)");
+                Scanner saisieFin = new Scanner(System.in);
+                String saisieFinal = saisieFin.nextLine();
+                if (!saisieFinal.equals("o")) {
+                    break;
+                }
+            }
+
+            if (cptMasculin > 1 && cptChien >= 1){
+                System.out.println("Désolé nous avons déjà un Chien masculin à bord");
+                cptChien--;
+                System.out.println("Un autre animal à ajouter ? (o/N)");
+                Scanner saisieFin = new Scanner(System.in);
+                String saisieFinal = saisieFin.nextLine();
+                if (!saisieFinal.equals("o")) {
+                    break;
+                }
+            }
+            if (cptFeminin > 1 && cptChien >= 1){
+                System.out.println("Désolé nous avons déjà un Chien féminin à bord");
+                cptChien--;
+                System.out.println("Un autre animal à ajouter ? (o/N)");
+                Scanner saisieFin = new Scanner(System.in);
+                String saisieFinal = saisieFin.nextLine();
+                if (!saisieFinal.equals("o")) {
+                    break;
+                }
+            }
+
+            if (cptMasculin > 1 && cptGorille >= 1){
+                System.out.println("Désolé nous avons déjà un Gorille masculin à bord");
+                cptGorille--;
+                System.out.println("Un autre animal à ajouter ? (o/N)");
+                Scanner saisieFin = new Scanner(System.in);
+                String saisieFinal = saisieFin.nextLine();
+                if (!saisieFinal.equals("o")) {
+                    break;
+                }
+            }
+            if (cptFeminin > 1 && cptGorille >= 1){
+                System.out.println("Désolé nous avons déjà un Gorille féminin à bord");
+                cptGorille--;
+                System.out.println("Un autre animal à ajouter ? (o/N)");
+                Scanner saisieFin = new Scanner(System.in);
+                String saisieFinal = saisieFin.nextLine();
+                if (!saisieFinal.equals("o")) {
+                    break;
+                }
+            }
+
+            if (cptMasculin > 1 && cptLapin >= 1){
+                System.out.println("Désolé nous avons déjà un Lapin masculin à bord");
+                cptLapin--;
+                System.out.println("Un autre animal à ajouter ? (o/N)");
+                Scanner saisieFin = new Scanner(System.in);
+                String saisieFinal = saisieFin.nextLine();
+                if (!saisieFinal.equals("o")) {
+                    break;
+                }
+            }
+            if (cptFeminin > 1 && cptLapin >= 1){
+                System.out.println("Désolé nous avons déjà un Lapin féminin à bord");
+                cptLapin--;
+                System.out.println("Un autre animal à ajouter ? (o/N)");
+                Scanner saisieFin = new Scanner(System.in);
+                String saisieFinal = saisieFin.nextLine();
+                if (!saisieFinal.equals("o")) {
+                    break;
+                }
+            }
+
+//*********************************VERIFICATION-ESPECE-ET-NB-DEJA-PRESENT-DANS-LARCHE***********************************
             if (cptChat > 2) {
                 System.out.println("Désolé nous avons déjà " + cptChat + " Chats à bord ! ");
                 System.out.println("Un autre animal à ajouter ? (o/N)");
