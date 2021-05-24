@@ -13,7 +13,7 @@ public class Main {
 //*************************************AFFICHAGE DU MENU****************************************************************
 
         //Je crée deux tableaux pour stocker les enum d'Espèce et Sexe
-        Sexe[] sexes = Sexe.values();
+        //Sexe[] sexes = Sexe.values();
         int cpt = 0;
         int cptChat = 0;
         int cptChien = 0;
@@ -21,151 +21,67 @@ public class Main {
         int cptLapin = 0;
         int cptMasculin = 0;
         int cptFeminin = 0;
+        String nom = null;
+        int sexe = -1;
+        int espece = -1;
 
         Arche archeDeNoe = new Arche();
-        Animal nouvelAnimal = new Animal(null, null);
+
 
         //Boucle pour remplir le tableau d'animaux jusqu'à 8
         while (cpt < 9) {
-
-            //Creation d'une instance d'animal qui sera valorisé par la suite
-
-            //Debut de l'affichage
-
 //**********************************************DEMANDE-DU-NOM**********************************************************
-            System.out.println("Quel est ton nom ?");
-            Scanner saisieNom = new Scanner(System.in);
-            String nom = saisieNom.nextLine();
-
+            Messages saisieDuNom = new Messages();
+            nom = saisieDuNom.saisieNom();
 //*******************************************DEMANDE-DU-GENRE***********************************************************
-            System.out.println("Quel est ton sexe ? 0-MASCULIN 1-FEMININ");
-
-                Scanner saisieSexe = new Scanner(System.in);
-                int sexe1 = saisieSexe.nextInt();
+            Messages saisieDuSexe = new Messages();
+            sexe = saisieDuSexe.saisieSexe();
             try{
-                if (sexe1 == 0){
-                    cptMasculin++;
-                } else if (sexe1 ==1){
-                    cptFeminin++;
+                switch (sexe) {
+                case 0 : cptMasculin++;break;
+                case 1 : cptFeminin++;break;
                 }
-            } catch (InputMismatchException e) {
-                System.err.println("Saisie incorrecte");
-            }
+            } catch (InputMismatchException e){
+                    System.err.println("Saisie incorrecte");
+                }
 //*******************************************DEMANDE-DE-L-ESPECE********************************************************
-            System.out.println("Quel est ton espèce ? 0-CHAT 1-CHIEN 2-GORILLE 3-LAPIN");
-            Scanner saisieEspece = new Scanner(System.in);
-            int espece1 = saisieEspece.nextInt();
-            //Stockage des saisies en créant des animaux qui correspondent
-                switch (espece1) {
-                    case 0:
-                        nouvelAnimal = new Chat(nom, sexes[sexe1]);
-                        System.out.println("Nouvel Animal Chat : " + nouvelAnimal);
-                        cptChat++;
-                        break;
-                    case 1:
-                        nouvelAnimal = new Chien(nom, sexes[sexe1]);
-                        System.out.println("Nouvel Animal Chien : " + nouvelAnimal);
-                        cptChien++;
-                        break;
-                    case 2:
-                        nouvelAnimal = new Gorille(nom, sexes[sexe1]);
-                        System.out.println("Nouvel Animal Gorille : " + nouvelAnimal);
-                        cptGorille++;
-                        break;
-                    case 3:
-                        nouvelAnimal = new Lapin(nom, sexes[sexe1]);
-                        System.out.println("Nouvel Animal Lapin : " + nouvelAnimal);
-                        cptLapin++;
-                        break;
-                    default:
-                        throw new IllegalStateException("Mauvaise valeur d'espèce : " + espece1);
+            Messages saisieEspece = new Messages();
+            espece = saisieEspece.saisieEspece(nom,sexe);
+                switch (espece) {
+                    case 0 : cptChat ++;break;
+                    case 1 : cptChien ++;break;
+                    case 2 : cptGorille ++;break;
+                    case 3 : cptLapin ++;break;
                 }
 //*********************************VERIFICATION-GENRE-DEJA-PRESENT-DANS-LARCHE******************************************
-            if (cptMasculin > 1 && cptChat > 1){
-                System.out.println("Désolé nous avons déjà un Chat masculin à bord");//remplacer sout par throw new  MemeSexeException, par contre faire une methode ajouterAnimal throws MemeSexeException
-                cptChat--;
+            int retourGenreExistant = -1;
+            Arche VerificationGenre = new Arche();
+            retourGenreExistant = VerificationGenre.genrePresent(cptMasculin,cptFeminin,cptChat,cptChien,cptGorille,cptLapin);
+            // Si il existe déjà un animal du même genre dans l'arche, on demande si l'utilisateur souhaite ajouter un
+            // autre animal
+            if (retourGenreExistant == 1){
+                autreAnimal();
                 if (autreAnimal() == false){
                     break;
                 }
             }
-            if (cptFeminin > 1 && cptChat > 1){
-                System.out.println("Désolé nous avons déjà un Chat féminin à bord");
-                cptChat--;
-                if (autreAnimal() == false){
-                    break;
-                }
-            }
-
-            if (cptMasculin > 1 && cptChien > 1){
-                System.out.println("Désolé nous avons déjà un Chien masculin à bord");
-                cptChien--;
-                if (autreAnimal() == false){
-                    break;
-                }
-            }
-            if (cptFeminin > 1 && cptChien > 1){
-                System.out.println("Désolé nous avons déjà un Chien féminin à bord");
-                cptChien--;
-                if (autreAnimal() == false){
-                    break;
-                }
-            }
-
-            if (cptMasculin > 1 && cptGorille > 1){
-                System.out.println("Désolé nous avons déjà un Gorille masculin à bord");
-                cptGorille--;
-                if (autreAnimal() == false){
-                    break;
-                }
-            }
-            if (cptFeminin > 1 && cptGorille > 1){
-                System.out.println("Désolé nous avons déjà un Gorille féminin à bord");
-                cptGorille--;
-                if (autreAnimal() == false){
-                    break;
-                }
-            }
-
-            if (cptMasculin > 1 && cptLapin > 1){
-                System.out.println("Désolé nous avons déjà un Lapin masculin à bord");
-                cptLapin--;
-                if (autreAnimal() == false){
-                    break;
-                }
-            }
-            if (cptFeminin > 1 && cptLapin > 1){
-                System.out.println("Désolé nous avons déjà un Lapin féminin à bord");
-                cptLapin--;
-                if (autreAnimal() == false){
-                    break;
-                }
-            }
-
 //*********************************VERIFICATION-ESPECE-ET-NB-DEJA-PRESENT-DANS-LARCHE***********************************
-            if (cptChat > 2) {
-                System.out.println("Désolé nous avons déjà " + cptChat + " Chats à bord ! ");
+            int retourNbEspece = -1;
+            Arche VerificationNbEspece = new Arche();
+            retourNbEspece = VerificationNbEspece.nombreEspeceAbord(cptChat,cptChien,cptGorille,cptLapin);
+            // Si il existe déjà un nb maximal d'un genre d'animal dans l'arche, on demande si l'utilisateur souhaite
+            // ajouter un autre animal
+            if (retourNbEspece == 1){
+              autreAnimal();
                 if (autreAnimal() == false){
-                    break;
-                }
-            } else if (cptChien > 2) {
-                System.out.println("Désolé nous avons déjà " + cptChien + " Chiens à bord ! ");
-                if (autreAnimal() == false){
-                    break;
-                }
-            } else if (cptGorille > 2) {
-                System.out.println("Désolé nous avons déjà " + cptGorille + " Gorille à bord ! ");
-                if (autreAnimal() == false){
-                    break;
-                }
-            } else if (cptLapin > 2) {
-                System.out.println("Désolé nous avons déjà " + cptLapin + " Lapins à bord ! ");
-                if (autreAnimal() == false){
-                    break;
-                }
-            } else {
+                      break;
+                    }
+            }
 //*************************************STOCKAGE-DE-L-ANIMAL-DANS-L-ARCHE************************************************
-
-                //Faire appel à la méthode ajouterAnimal de la classe Arche afin d'ajouter l'animal dans un tableau d'animaux.
+            if (retourGenreExistant == 0 && retourNbEspece == 0){
+             //Faire appel à la méthode ajouterAnimal de la classe Arche afin d'ajouter l'animal dans un tableau d'animaux.
+                Sexe[] sexes = Sexe.values();
+                Animal nouvelAnimal = new Animal(nom,sexes[sexe]);
                 archeDeNoe.ajouterAnimal(nouvelAnimal);
                 System.out.println(archeDeNoe);
                 cpt++;
