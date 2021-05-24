@@ -1,16 +1,19 @@
 package fr.eni;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
  * CREATION DE LA CLASSE ARCHE
  */
 public class Arche {
-    private Animal[] animaux = new Animal[8];
+    private List<Animal> animaux = new ArrayList<>();
 
     //********************************************CONSTRUCTEUR**************************************************************
-    public Arche(Animal[] animaux) {
+
+    public Arche(List<Animal> animaux) {
         this.animaux = animaux;
     }
 
@@ -19,12 +22,9 @@ public class Arche {
 
     //********************************************METHODES******************************************************************
     public void ajouterAnimal(Animal nouvelAnimal) {
-        for (int i = 0; i < this.animaux.length; i++) {
-            if (this.animaux[i] == null) {
-                this.animaux[i] = nouvelAnimal;
-                break;
-            }
-        }
+        animaux.add(nouvelAnimal);
+
+
     }
 //********************************************METHODE-AFFICHAGE*********************************************************
 
@@ -32,7 +32,7 @@ public class Arche {
     @Override
     public String toString() {
         return "Arche{" +
-                "animaux=" + Arrays.toString(animaux) +
+                "animaux=" + animaux +
                 '}';
     }
 
